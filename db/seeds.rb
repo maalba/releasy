@@ -14,7 +14,21 @@
   chosen = artists.first
   name = chosen.name
   spotify_id = chosen.id
-  image_url = chosen.images.last["url"]
+  image_url = chosen.images ? chosen.images.first["url"] : nil
+  puts "seeding artist..."
+  Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
+end
+
+20.times do
+  puts "Finding artist from faker..."
+  artist = Faker::Music::Hiphop.artist
+  puts "Searching spotify..."
+  artists = RSpotify::Artist.search(artist)
+  puts "getting spotify info..."
+  chosen = artists.first
+  name = chosen.name
+  spotify_id = chosen.id
+  image_url = chosen.images ? chosen.images.first["url"] : nil
   puts "seeding artist..."
   Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
 end
