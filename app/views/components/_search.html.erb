@@ -1,9 +1,10 @@
   <%= form_tag artists_path, class: "simple_form search", method: :get do %>
-  <div class="search-form-control form-group">
+  <div class="search-form-control form-group" data-controller="autocomplete">
     <%= text_field_tag :query,
       params[:query],
       class: "form-control string required",
-      placeholder: "Find an artist"
+      placeholder: "Find an artist",
+      data: { action: "keyup->autocomplete#refresh", autocomplete_target: "query" }
     %>
       <button name="button" type="submit" class="btn btn-flat">
         <i class="fas fa-search"></i> Search
