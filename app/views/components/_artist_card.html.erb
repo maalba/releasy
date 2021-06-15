@@ -2,8 +2,9 @@
   <%= image_tag artist.image_url, alt: "Artist Image", class: "card-img-top" %>
   <div class="card-body">
     <h5 class="card-title"><%= artist.name %></h5>
+    <%= link_to toggle_follow_artist_path(artist), remote: true, method: :post, id: "follow-button" do %>
+      <i class="far fa-heart"></i>
+      <%# <i class="fas fa-heart"></i> %>
+    <% end %>
   </div>
-    <div class="card-footer bg-transparent">
-      <small class="btn btn-light rounded">❤️ Follow</small>
-    </div>
 </div>

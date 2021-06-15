@@ -36,6 +36,7 @@ gem 'simple_form'
 gem 'rspotify'
 gem 'faker'
 gem 'pg_search'
+gem 'acts_as_favoritor'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
