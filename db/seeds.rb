@@ -14,7 +14,7 @@
   chosen = artists.first
   name = chosen.name
   spotify_id = chosen.id
-  image_url = chosen.images ? chosen.images.last["url"] : nil
+  image_url = chosen.images ? chosen.images.first["url"] : nil
   puts "seeding artist..."
   Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
 end
@@ -28,7 +28,7 @@ end
   chosen = artists.first
   name = chosen.name
   spotify_id = chosen.id
-  image_url = chosen.images ? chosen.images.last["url"] : nil
+  image_url = chosen.images ? chosen.images.first["url"] : nil
   puts "seeding artist..."
   Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
 end

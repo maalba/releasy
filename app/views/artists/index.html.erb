@@ -3,7 +3,7 @@
 <div class="container">
   <div class="row">
     <% @artists.each do |artist| %>
-      <div class="col-sm-2 col-lg-4">
+      <div class="col-sm">
         <%= render 'components/artist_card', artist: artist %>
       </div>
     <% end %>
