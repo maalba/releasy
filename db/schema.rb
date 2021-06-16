@@ -10,10 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_15_054132) do
+ActiveRecord::Schema.define(version: 2021_06_16_060504) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "albums", force: :cascade do |t|
+    t.string "title"
+    t.date "release_date"
+    t.string "album_type"
+    t.string "spotify_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "cover_url"
+  end
 
   create_table "artists", force: :cascade do |t|
     t.string "name"
@@ -40,6 +50,15 @@ ActiveRecord::Schema.define(version: 2021_06_15_054132) do
     t.index ["scope"], name: "index_favorites_on_scope"
   end
 
+  create_table "releases", force: :cascade do |t|
+    t.bigint "artist_id", null: false
+    t.bigint "album_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["album_id"], name: "index_releases_on_album_id"
+    t.index ["artist_id"], name: "index_releases_on_artist_id"
+  end
+
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -52,4 +71,6 @@ ActiveRecord::Schema.define(version: 2021_06_15_054132) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "releases", "albums"
+  add_foreign_key "releases", "artists"
 end
