@@ -6,4 +6,9 @@ class Artist < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+    pg_search_scope :search_by_id,
+    against: :spotify_id,
+    using: {
+      tsearch: { prefix: true } # <-- now `superman batm` will return something!
+    }
 end
