@@ -9,7 +9,7 @@
   <div class="artist-cards row">
     <% @artists.each do |artist| %>
       <div class="col-sm">
-        <%= render 'components/artist_card', artist: artist %>
+        <%= render 'components/artist_card', artist: artist, user: current_user %>
       </div>
     <% end %>
   </div>
