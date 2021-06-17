@@ -1,15 +1,15 @@
-<%= album.title %>
 <div class="album-card">
   <div class="album-cover">
+    <%= image_tag album.cover_url unless album.cover_url.nil? %>
   </div>
   <div class="album-details">
     <div class="album-details-top">
+      <span class="album-title"><%= album.title %></span>
+      <span class="album-subtitle"><%= album.artists.first.name %></span>
     </div>
     <div class="album-details-bottom">
-      <div class="album-type">
-      </div>
-      <div class="release-date">
-      </div>
+      <div class="album-type"><%= album.album_type.capitalize %></div>
+      <div class="release-date"><%= album.release_date %></div>
     </div>
   </div>
 </div>

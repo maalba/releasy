@@ -1,0 +1,44 @@
+.album-card {
+  // position: relative;
+  display: flex;
+  width: 450px;
+  height: auto;
+  margin: 0 auto 20px;
+  border-radius: 5px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+.album-cover img {
+  height: 125px;
+  object-fit: contain;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.album-details {
+  margin-left: 5px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: space-between;
+}
+
+.album-title {
+  font-family: $title-font;
+  font-weight: normal;
+  font-size: 17px;
+  display: block;
+}
+
+.album-subtitle {
+  font-family: $title-font;
+  font-weight: normal;
+  font-size: 12px;
+}
+
+.album-details-bottom {
+  display: flex;
+  justify-content: space-between;
+  font-weight: 300;
+}

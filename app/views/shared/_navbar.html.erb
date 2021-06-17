@@ -2,21 +2,21 @@
   <%= link_to "#", class: "navbar-brand" do %>
     <%= image_tag "https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" %>
   <% end %>
-  
+
   <% if user_signed_in? %>
     <ul class="navbar-nav mr-auto">
       <li class="nav-item">
-        <%= link_to "Feed", "#", class: "nav-link" %>
+        <%= link_to "Feed", feed_path, class: "nav-link" %>
       </li>
       <li class="nav-item">
         <%= link_to "Following", "#", class: "nav-link" %>
       </li>
       <li class="nav-item active">
-        <%= link_to "Find", "#", class: "nav-link" %>
+        <%= link_to "Find", artists_path, class: "nav-link" %>
       </li>
     </ul>
   <% end %>
-  
+
   <div class="collapse navbar-collapse" id="navbarSupportedContent">
     <% if user_signed_in? %>
       <div class="nav-item dropdown">
