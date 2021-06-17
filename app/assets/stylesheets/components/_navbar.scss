@@ -6,10 +6,11 @@
 
   & .nav-item {
     @include subheader-font;
-
-    & a{
+    
+    & a {
       color: white;
     }
+
     & a:hover {
       text-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
     }
@@ -20,6 +21,9 @@
     & a {
       color: black;
     }
+  }
+  & .active a {
+    text-decoration: underline;
   }
 }
 
