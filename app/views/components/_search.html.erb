@@ -5,7 +5,7 @@
       <%= text_field_tag :query,
         params[:query],
         class: "form-control string required",
-        placeholder: "Find an artist",
+        placeholder: placeholder_text,
         data: { action: "keyup->filter#filter", filter_target: "source" }
       %>
     </div>
