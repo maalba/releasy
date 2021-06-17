@@ -1,9 +1,33 @@
 // Import Google fonts
-@import url('https://fonts.googleapis.com/css?family=Nunito:400,700|Work+Sans:400,700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather:wght@400;700&family=Open+Sans:wght@400;700&display=swap');
 
 // Define fonts for body and headers
-$body-font: "Work Sans", "Helvetica", "sans-serif";
-$headers-font: "Nunito", "Helvetica", "sans-serif";
+$title-font: "Merriweather";
+$body-font: "Open Sans";
+
+@mixin title-font {
+  font: $title-font;
+  font-weight: bold;
+  font-size: 34px;
+}
+
+@mixin body-font {
+  font: $body-font;
+  font-weight: normal;
+  font-size: 13px;
+}
+
+@mixin subheader-font {
+  font: $body-font;
+  font-weight: normal;
+  font-size: 24px;
+}
+
+@mixin card-title-font {
+  font: $body-font;
+  font-weight: bold;
+  font-size: 20px;
+}
 
 // To use a font file (.woff) uncomment following lines
 // @font-face {
