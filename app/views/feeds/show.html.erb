@@ -1,5 +1,8 @@
-<h1>Feeds</h1>
+<div class="album-container">
+  <h1>New Releases</h1>
 
-<% @album_releases.each do |album| %>
-  <%= render 'components/album_card', album: album %>
-<% end %>
+  <% @album_releases.each do |album| %>
+    <%= render 'components/album_card', album: album %>
+  <% end %>
+</div>
+
