@@ -1,13 +1,23 @@
   <%= form_tag artists_path, class: "simple_form search", method: :get do %>
-  <div class="search-form-control form-group">
-    <%= text_field_tag :query,
-      params[:query],
-      class: "form-control string required",
-      placeholder: "Find an artist",
-      data: { action: "keyup->filter#filter", filter_target: "source" }
-    %>
-      <button name="button" type="submit" class="btn btn-flat">
-        <i class="fas fa-search"></i> Search
+  <div class="search-form-control form-group", id="search-bar">
+    <div class="d-flex align-items-center">
+      <i class="fas fa-search"></i>
+      <%= text_field_tag :query,
+        params[:query],
+        class: "form-control string required",
+        placeholder: "Find an artist",
+        data: { action: "keyup->filter#filter", filter_target: "source" }
+      %>
+    </div>
+    <div class="search-options-dropdown">
+      <button class="search-dropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Music <i class="fas fa-angle-down"></i>
       </button>
+      <ul class="dropdown-menu">
+        <li>Music</li>
+        <li>TV Shows</li>
+        <li>Movies</li>
+      </ul>
+    </div>
   </div>
   <% end %>

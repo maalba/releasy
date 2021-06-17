@@ -1,22 +1,60 @@
 .search-form-control {
   position: relative;
-}
+  border-bottom: 2px solid white;
+  padding: 0 8px;
+  @include title-font;
+  font-weight: lighter;
 
-.search-form-control .btn {
-  position: absolute;
-  top: 8px;
-  bottom: 8px;
-  right: 8px;
-}
+  & .fa-search {
+    color: white;
+    opacity: 0.4;
+  }
 
-.search-form-control .form-control {
-  height: 3.5rem;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
-  border: 1px solid #E7E7E7;
+  & .form-control {
+    background-color: transparent;
+    box-shadow: none;
+    color: white;
+    border: none;
+    @include title-font;
+    font-weight: lighter;
+    height: 3.5rem;
+
+    &:focus {
+      outline: none !important;
+    }
+  }
+
+  & ::placeholder {
+    color: white;
+    opacity: 0.4;
+  }
+
+  & .search-options-dropdown {
+    color: white;
+    @include title-font;
+    font-weight: lighter;
+    font-size: 24px;
+    position: absolute;
+    top: 8px;
+    bottom: 8px;
+    right: 8px;
+  }
+
+  & .search-dropdown {
+    background-color: transparent;
+    border: none;
+    color: white;
+    @include title-font;
+    font-weight: lighter;
+    font-size: 24px;
+    opacity: 0.4;
+  }
+
+  & .dropdown-menu {
+    background-color:  #6bd895;
+  }
 }
 
 .search-form-control .form-control:focus {
-  border: 1px solid #1EDD88;
   outline: none !important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
 }
