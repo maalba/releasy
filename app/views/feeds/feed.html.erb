@@ -1,0 +1,5 @@
+<h1>Feeds</h1>
+
+<% @album_releases.each |release| do %>
+  <%= render 'components/album_card', release: release %>
+<% end %>
