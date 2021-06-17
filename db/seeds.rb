@@ -5,32 +5,58 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-20.times do
-  puts "Finding artist from faker..."
-  artist = Faker::Music.band
-  puts "Searching spotify..."
-  artists = RSpotify::Artist.search(artist)
-  puts "getting spotify info..."
-  chosen = artists.first
-  name = chosen.name
-  spotify_id = chosen.id
-  image_url = chosen.images ? chosen.images.first["url"] : nil
-  puts "seeding artist..."
-  Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
-end
+puts "cleaning out existing data..."
+Artist.delete_all
+Album.delete_all
+
+puts "Creating 20 new hip hop artists and one album for each..."
 
 20.times do
-  puts "Finding artist from faker..."
   artist = Faker::Music::Hiphop.artist
-  puts "Searching spotify..."
   artists = RSpotify::Artist.search(artist)
-  puts "getting spotify info..."
   chosen = artists.first
   name = chosen.name
   spotify_id = chosen.id
   image_url = chosen.images ? chosen.images.first["url"] : nil
-  puts "seeding artist..."
-  Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
+  new_artist = Artist.new(name: name, spotify_id: spotify_id, image_url: image_url)
+  new_artist.save
+  album = chosen.albums.first
+  album_title = album.name
+  album_release_date = album.release_date_precision == "day" ? Date.parse(album.release_date)  : nil
+  album_type = album.type
+  album_spotify_id = album.id
+  album_cover_url = album.images ? album.images.first["url"] : nil
+  new_album = Album.new(title: album_title, release_date: album_release_date, album_type: album_type, spotify_id: album_spotify_id)
+  new_album.save
+  release = Release.new()
+  release.artist = new_artist
+  release.album = new_album
+  release.save
+end
+
+puts "Creating 20 new bands and one album for each..."
+
+20.times do
+  artist = Faker::Music.band
+  artists = RSpotify::Artist.search(artist)
+  chosen = artists.first
+  name = chosen.name
+  spotify_id = chosen.id
+  image_url = chosen.images ? chosen.images.first["url"] : nil
+  new_artist = Artist.new(name: name, spotify_id: spotify_id, image_url: image_url)
+  new_artist.save
+  album = chosen.albums.first
+  album_title = album.name
+  album_release_date = album.release_date_precision == "day" ? Date.parse(album.release_date)  : nil
+  album_type = album.type
+  album_spotify_id = album.id
+  album_cover_url = album.images ? album.images.first["url"] : nil
+  new_album = Album.new(title: album_title, release_date: album_release_date, album_type: album_type, spotify_id: album_spotify_id)
+  new_album.save
+  release = Release.new()
+  release.artist = new_artist
+  release.album = new_album
+  release.save
 end
 
 puts "finished seeding!"

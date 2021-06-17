@@ -1,4 +1,7 @@
 class Artist < ApplicationRecord
+  has_many :releases
+  has_many :albums, through: :releases
+
   include PgSearch::Model
   acts_as_favoritable
   pg_search_scope :search_by_name,
