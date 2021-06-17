@@ -1,11 +1,54 @@
-.card {
-  width: 160px;
-  height: 307px;
+.card-new {
+  width: 300px;
+  height: auto;
+  margin-bottom: 20px;
+  position: relative;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.50));
+  // z-index: 50;
+  // background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 54.39%, rgba(58, 58, 58, 0.79) 91.59%);
 
   img {
+    border-radius: 5px;
     object-fit: cover;
-    width: auto;
-    height: 160px;
+    width: 300px;
+    height: 300px;
+  }
+}
+
+.card-new-title {
+  position: absolute;
+  text-align: center;
+  width: 100%;
+  color: #FFFFFF;
+  @include card-title-font;
+  bottom: 5px;
+  // z-index: 100;
+}
+
+.heart-background {
+  height: 40px;
+  width: 40px;
+  position: absolute;
+  border-radius: 50px;
+  background-color: white;
+  top: -5px;
+  left: -5px;
+  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+
+  a {
+    position: absolute;
+    top: 55%;
+    transform: translateY(-50%);
+    left: 20%;
+    color: #EE6666;
+
+    :hover {
+      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+    }
+  }
+
+  i {
+    font-size: 1.5rem;
   }
 }
 
