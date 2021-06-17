@@ -6,27 +6,27 @@ $title-font: "Merriweather";
 $body-font: "Open Sans";
 
 @mixin title-font {
-  font: $title-font;
+  font-family: $title-font;
   font-weight: bold;
   font-size: 34px;
 }
 
 @mixin body-font {
-  font: $body-font;
+  font-family: $body-font;
   font-weight: normal;
   font-size: 13px;
 }
 
 @mixin subheader-font {
-  font: $body-font;
+  font-family: $body-font;
   font-weight: normal;
   font-size: 24px;
 }
 
 @mixin card-title-font {
-  font: $body-font;
+  font-family: $body-font;
   font-weight: bold;
-  font-size: 20px;
+  font-size: 25px;
 }
 
 // To use a font file (.woff) uncomment following lines
