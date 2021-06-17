@@ -1,15 +1,15 @@
 <div class="container artists-find" data-controller="filter">
   <div class="search my-5">
-    <%= render "components/search", placeholder_text: "Search for an artist..." %>
+    <%= render "components/search", placeholder_text: "Find an artist you're following..." %>
   </div>
 
   <% if @query %>
     <h2>Search results for <%= @query %>:</h2>
-    <%= link_to "Back to Browse", artists_path %>
+    <%= link_to "Back to Browse", dashboard_path %>
   <% end %>
 
   <div class="artist-cards row">
-    <% @artists.each do |artist| %>
+    <% @followed_artists.each do |artist| %>
       <div class="col-sm">
         <%= render 'components/artist_card', artist: artist, user: current_user %>
       </div>
