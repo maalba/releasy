@@ -3,11 +3,6 @@
     <%= render "components/search", placeholder_text: "Find an artist you're following..." %>
   </div>
 
-  <% if @query %>
-    <h2>Search results for <%= @query %>:</h2>
-    <%= link_to "Back to Browse", dashboard_path %>
-  <% end %>
-
   <div class="artist-cards row">
     <% @followed_artists.each do |artist| %>
       <div class="col-sm">
@@ -15,13 +10,4 @@
       </div>
     <% end %>
   </div>
-
-  <% if @query %>
-      <% @spotify_artists.each do |artist| %>
-        <% id = artist.spotify_id %>
-        <% unless Artist.search_by_id(id).first %>
-          <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
-        <% end %>
-      <% end %>
-  <% end %>
 </div>

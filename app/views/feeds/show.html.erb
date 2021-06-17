@@ -1,7 +1,12 @@
 <div class="album-container">
   <h1>New Releases</h1>
 
+  <% latest_date = @album_releases.first.release_date + 1 %>
   <% @album_releases.each do |album| %>
+    <% if album.release_date < latest_date %>
+      <% latest_date = album.release_date %>
+      <h1><%= "#{Date::MONTHNAMES[latest_date.month]} #{latest_date.day}"  %></h1>
+    <% end %>
     <%= render 'components/album_card', album: album %>
   <% end %>
 </div>
