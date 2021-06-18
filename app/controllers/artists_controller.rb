@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :authenticate_user!, only: :toggle_follow
+  before_action :authenticate_spotify, only: :index
 
   def index
     if params[:query].present?
@@ -50,5 +50,10 @@ class ArtistsController < ApplicationController
   def artist_params
     params.require(:artist).permit(:name, :spotify_id, :image_url)
   end
+
+  def authenticate_spotify
+    RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
+  end
+
 
 end
