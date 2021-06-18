@@ -36,3 +36,18 @@
   }
 }
 
+.no-feed-message {
+  text-align: center;
+  color: #FFFFFF;
+
+  a {
+    color: rgb(166, 166, 226);
+    text-decoration: underline;
+  }
+  
+  a:hover {
+    font-weight: bold;
+  }
+  
+} 
+

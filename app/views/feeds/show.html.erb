@@ -4,6 +4,8 @@
       <% latest_date = @album_releases.first.release_date + 1 %>
       <% @album_releases.each do |album| %>
         <% if album.release_date < latest_date %>
+          <% latest_date = album.release_date %>
+          <% new_date = true %>
           <div class="date-with-card">
             <div class="feed-date">
               <p class="feed-month text-left"><%= "#{Date::ABBR_MONTHNAMES[latest_date.month]}" %></p>
@@ -11,13 +13,12 @@
             </div>
         <% end %>
         <%= render 'components/album_card', album: album %>
-        <% if album.release_date < latest_date %>
+        <% if new_date %>
           </div>
-          <% latest_date = album.release_date %>
         <% end %>
       <% end %>
     <% else %>
-      <h3>No new releases...go ahead and favorite some more artists!</h3>
+      <h3 class="no-feed-message">No new releases...go ahead and <%= link_to "follow some more artists!", artists_path %></h3>
     <% end %>
 </div>
 
