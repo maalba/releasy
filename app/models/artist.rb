@@ -1,5 +1,5 @@
 class Artist < ApplicationRecord
-  has_many :releases
+  has_many :releases, dependent: :destroy
   has_many :albums, through: :releases
 
   include PgSearch::Model
