@@ -1,4 +1,4 @@
-  <%= form_tag artists_path, class: "simple_form search", method: :get do %>
+  <%= form_tag params[:controller] == "artists" ? artists_path : dashboard_path, class: "simple_form search", method: :get do %>
   <div class="search-form-control form-group", id="search-bar">
     <div class="d-flex align-items-center">
       <i class="fas fa-search"></i>
