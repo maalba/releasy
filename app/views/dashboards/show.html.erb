@@ -3,11 +3,20 @@
     <%= render "components/search", placeholder_text: "Find an artist you're following..." %>
   </div>
 
-  <div class="artist-cards row">
-    <% @followed_artists.each do |artist| %>
-      <div class="col-sm">
-        <%= render 'components/artist_card', artist: artist, user: current_user %>
-      </div>
+  <% if !@followed_artists.empty? %>
+    <div class="artist-cards row">
+      <% @followed_artists.each do |artist| %>
+        <div class="col-sm">
+          <%= render 'components/artist_card', artist: artist, user: current_user %>
+        </div>
+      <% end %>
+    </div>
+  <% else %>
+    <% if @query %>
+      <h3 class="no-feed-message">You don't follow any artists matching "<%= @query %>"
+      <br><%= link_to "Find more artists to follow", artists_path %></h3>
+    <% else %>
+      <h3 class="no-feed-message">You are not following anyone yet...go ahead and <%= link_to "follow some artists!", artists_path %></h3>
     <% end %>
-  </div>
+  <% end %>
 </div>
