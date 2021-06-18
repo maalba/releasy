@@ -31,6 +31,18 @@ class ArtistsController < ApplicationController
     artist = Artist.new(artist_params)
     artist.save!
     current_user.favorite(artist)
+    album = RSpotify::Artist.find(artist.spotify_id).albums.first
+    album_title = album.name
+    album_release_date = album.release_date_precision == "day" ? Date.parse(album.release_date)  : nil
+    album_type = album.type
+    album_spotify_id = album.id
+    album_cover_url = album.images ? album.images.first["url"] : nil
+    new_album = Album.new(title: album_title, release_date: album_release_date, album_type: album_type, spotify_id: album_spotify_id, )
+    new_album.save!
+    release = Release.new()
+    release.artist = artist
+    release.album = new_album
+    release.save!
   end
 
   private
