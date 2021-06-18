@@ -1,3 +1,0 @@
-# Class SpotifyRequest
-
-# end
