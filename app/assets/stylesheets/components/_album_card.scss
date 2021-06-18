@@ -1,5 +1,5 @@
 .album-card {
-  // position: relative;
+  position: relative;
   display: flex;
   width: 450px;
   height: auto;
@@ -7,6 +7,19 @@
   border-radius: 5px;
   background: rgba(255, 255, 255, 0.92);
   box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+
+  .album-link {
+    position: absolute;
+    left: 98%;
+    top: -15px;
+    font-size: 1.5rem;
+    color: green;
+
+    i {
+      background-color: black;
+      border-radius: 50%;
+    }
+  }
 }
 
 .album-cover img {
