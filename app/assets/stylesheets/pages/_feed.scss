@@ -1,6 +1,6 @@
 .album-container {
   margin: 0 auto;
-  width: 50vw;
+  width: 60vw;
 
   h1 {
     text-align: center;
@@ -8,6 +8,26 @@
     color: #FFFFFF;
     margin-top: 20px;
     margin-bottom: 20px;
+  }
+}
+
+.date-with-card {
+  width: 1005;
+  position: relative;
+}
+
+.feed-date {
+  position: absolute;
+  right: 95%;
+  @include subheader-font;
+  color: white;
+  padding: 0 8px 0 0;
+  border-right: 1px solid white;
+  line-height: 0.5;
+
+  .feed-day {
+    font-size: 32px;
+    font-weight: bold;
   }
 }
 
