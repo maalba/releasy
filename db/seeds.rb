@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+puts "authenticating spotify credential..."
+RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
 puts "cleaning out existing data..."
 Artist.delete_all
 Album.delete_all
@@ -51,7 +53,7 @@ puts "Creating 20 new bands and one album for each..."
   album_type = album.type
   album_spotify_id = album.id
   album_cover_url = album.images ? album.images.first["url"] : nil
-  new_album = Album.new(title: album_title, release_date: album_release_date, album_type: album_type, spotify_id: album_spotify_id)
+  new_album = Album.new(title: album_title, release_date: album_release_date, album_type: album_type, spotify_id: album_spotify_id, cover_url: album_cover_url)
   new_album.save
   release = Release.new()
   release.artist = new_artist
