@@ -14,18 +14,16 @@
         <%= render 'components/artist_card', artist: artist, user: current_user %>
       </div>
     <% end %>
-  </div>
-
   <% if @query %>
-    <div class="artist-cards row">
-        <% @spotify_artists.each do |artist| %>
-          <% id = artist.spotify_id %>
-          <% unless Artist.search_by_id(id).first %>
-            <div class="col-sm">
-              <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
-            </div>
-          <% end %>
-        <% end %>
-    </div>
+    <% @spotify_artists.each do |artist| %>
+      <% id = artist.spotify_id %>
+      <% unless Artist.search_by_id(id).first %>
+        <div class="col-sm">
+          <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
+        </div>
+      <% end %>
+    <% end %>
   <% end %>
 </div>
+  </div>
+
