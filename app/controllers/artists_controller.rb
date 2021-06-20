@@ -1,5 +1,5 @@
 class ArtistsController < ApplicationController
-  before_action :authenticate_spotify, only: :index
+  after_action :authenticate_spotify, only: :index
 
   def index
     if params[:query].present?
@@ -31,18 +31,7 @@ class ArtistsController < ApplicationController
     artist = Artist.new(artist_params)
     artist.save!
     current_user.favorite(artist)
-    album = RSpotify::Artist.find(artist.spotify_id).albums.first
-    album_title = album.name
-    album_release_date = album.release_date_precision == "day" ? Date.parse(album.release_date)  : nil
-    album_type = album.type
-    album_spotify_id = album.id
-    album_cover_url = album.images ? album.images.first["url"] : nil
-    new_album = Album.new(title: album_title, release_date: album_release_date, album_type: album_type, spotify_id: album_spotify_id, cover_url: album_cover_url )
-    new_album.save!
-    release = Release.new()
-    release.artist = artist
-    release.album = new_album
-    release.save!
+    FetchRecentAlbumsJob.perform_now(artist)
   end
 
   private
@@ -54,6 +43,4 @@ class ArtistsController < ApplicationController
   def authenticate_spotify
     RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
   end
-
-
 end
