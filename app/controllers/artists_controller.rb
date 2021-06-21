@@ -39,6 +39,7 @@ class ArtistsController < ApplicationController
   end
 
   def add_from_spotify
+    byebug
     artists = params[:favorites]
     # artists.each do |artist|
     # end

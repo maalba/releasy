@@ -30,14 +30,16 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'devise'
 
+gem 'omniauth'
 gem 'autoprefixer-rails', '10.2.5'
 gem 'font-awesome-sass'
 gem 'simple_form'
-gem 'rspotify'
+gem 'rspotify', '2.10.2'
 gem 'faker'
 gem 'pg_search'
 gem 'acts_as_favoritor'
 gem "simple_calendar", "~> 2.4"
+gem 'omniauth-rails_csrf_protection'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'

@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
   def spotify
-    spotify_user = RSpotify::User.new(request.env['omniauth.auth']), scope: 'user-follow-read user-library-read user-top-read'
+    spotify_user = RSpotify::User.new(request.env['omniauth.auth'])
     # Now you can access user's private data, create playlists and much more
 
     # Set user's attributes based off spotify sign in
