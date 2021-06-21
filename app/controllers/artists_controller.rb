@@ -12,6 +12,10 @@ class ArtistsController < ApplicationController
       end
     else
       @artists = Artist.all
+      unless current_user.all_favorited.empty?
+        artist = current_user.all_favorited.sample
+        generate_recommendations(artist)
+      end
     end
     respond_to do |format|
       format.html
@@ -35,6 +39,16 @@ class ArtistsController < ApplicationController
   end
 
   private
+
+  def generate_recommendations(artist)
+    id = artist.spotify_id
+    spotify_artist = RSpotify::Artist.find(id)
+    recommended_artists = spotify_artist.related_artists[0..9]
+    @recommendations = []
+    recommended_artists.each do |artist|
+      @recommendations << Artist.new(name: artist.name, spotify_id: artist.id, image_url: artist.images.first ? artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80")
+    end
+  end
 
   def artist_params
     params.require(:artist).permit(:name, :spotify_id, :image_url)

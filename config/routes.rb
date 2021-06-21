@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   post 'new_follow', to: 'artists#new_follow'
   get 'dashboard', to: 'dashboards#show'
   get 'feed', to: 'feeds#show'
+  get '/auth/spotify/callback', to: 'users#spotify'
   resources :artists, only: [ :index, :create ] do
     member do
       post 'toggle_follow', to: 'artists#toggle_follow'
