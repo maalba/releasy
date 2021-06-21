@@ -13,7 +13,7 @@ class ArtistsController < ApplicationController
     else
       @artists = Artist.all
       unless current_user.all_favorited.empty?
-        artist = current_user.all_favorit.sample
+        artist = current_user.all_favorited.sample
         generate_recommendations(artist)
       end
     end
