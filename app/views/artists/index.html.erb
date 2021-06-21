@@ -14,7 +14,7 @@
     <%= link_to "Back to Browse", artists_path %>
   <% end %>
 
-  <% unless current_user.all_favorited.empty? || @query %>
+  <%# <% unless current_user.all_favorited.empty? || @query %> 
 
   <div class="artist-cards row">
     <% @artists.each do |artist| %>

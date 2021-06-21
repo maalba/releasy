@@ -288,8 +288,38 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  autoprefixer-unknown
+  dotenv-unknown
+  font-unknown
+  pry-unknown
+  pry-unknown
+  sass-unknown
+  selenium-unknown
+  spring-unknown
+  tzinfo-unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  unknown
+  web-unknown
   x86_64-linux
 
+DEPENDENCIES
   acts_as_favoritor
   autoprefixer-rails (= 10.2.5)
   bootsnap (>= 1.4.2)
