@@ -3,10 +3,14 @@
     <%= render "components/search", placeholder_text: "Search for an artist..." %>
   </div>
 
+  <%= link_to 'Sign in with Spotify', '/auth/spotify/callback' %>
+
   <% if @query %>
     <h2>Search results for <%= @query %>:</h2>
     <%= link_to "Back to Browse", artists_path %>
   <% end %>
+
+  <% unless current_user.all_favorited.empty? || @query %>
 
   <div class="artist-cards row">
     <% @artists.each do |artist| %>
