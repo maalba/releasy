@@ -255,7 +255,6 @@ GEM
     thor (1.1.0)
     thread_safe (0.3.6)
     tilt (2.0.10)
-    timeliness (0.4.4)
     turbolinks (5.2.1)
       turbolinks-source (~> 5.2)
     turbolinks-source (5.2.0)
@@ -287,6 +286,7 @@ GEM
     zeitwerk (2.4.2)
 
 PLATFORMS
+  x86_64-darwin-19
   x86_64-darwin-20
   x86_64-linux
 
@@ -315,7 +315,6 @@ DEPENDENCIES
   simple_form
   spring
   spring-watcher-listen (~> 2.0.0)
-  timeliness
   turbolinks (~> 5)
   tzinfo-data
   web-console (>= 3.3.0)
@@ -326,4 +325,4 @@ RUBY VERSION
    ruby 2.6.6p146
 
 BUNDLED WITH
-   2.2.16
+   2.2.17

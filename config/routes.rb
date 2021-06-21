@@ -9,5 +9,7 @@ Rails.application.routes.draw do
       post 'toggle_follow', to: 'artists#toggle_follow'
     end
   end
+  get '/auth/spotify/callback', to: 'users#spotify'
+
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
