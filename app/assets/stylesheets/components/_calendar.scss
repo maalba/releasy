@@ -1,6 +1,6 @@
 .tooltip-name {
   position: relative;
-  display: inline-block;
+  display: table;
   border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 
 }
@@ -35,3 +35,6 @@
   transition-delay: 0s;
 }
 
+.simple-calendar .today {
+  background: $baby-duck-yellow;
+}
