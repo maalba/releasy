@@ -147,7 +147,7 @@ GEM
     nokogiri (1.11.7)
       mini_portile2 (~> 2.5.0)
       racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-linux)
+    nokogiri (1.11.7-x86_64-darwin)
       racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
@@ -301,31 +301,13 @@ PLATFORMS
   dotenv-unknown
   font-unknown
   pry-unknown
-  pry-unknown
   sass-unknown
   selenium-unknown
   spring-unknown
   tzinfo-unknown
   unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
-  unknown
   web-unknown
+  x86_64-darwin-20
   x86_64-linux
 
 DEPENDENCIES
