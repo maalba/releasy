@@ -38,6 +38,14 @@ class ArtistsController < ApplicationController
     FetchRecentAlbumsJob.perform_now(artist)
   end
 
+  def add_from_spotify
+    byebug
+    artists = params[:favorites]
+    # artists.each do |artist|
+    # end
+    redirect_to feed_path
+  end
+
   private
 
   def generate_recommendations(artist)

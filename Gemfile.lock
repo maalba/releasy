@@ -149,8 +149,6 @@ GEM
       racc (~> 1.4)
     nokogiri (1.11.7-x86_64-darwin)
       racc (~> 1.4)
-    nokogiri (1.11.7-x86_64-linux)
-      racc (~> 1.4)
     oauth2 (1.4.7)
       faraday (>= 0.8, < 2.0)
       jwt (>= 1.0, < 3.0)
@@ -164,6 +162,9 @@ GEM
     omniauth-oauth2 (1.7.1)
       oauth2 (~> 1.4)
       omniauth (>= 1.9, < 3)
+    omniauth-rails_csrf_protection (1.0.0)
+      actionpack (>= 4.2)
+      omniauth (~> 2.0)
     orm_adapter (0.5.0)
     pg (1.2.3)
     pg_search (2.3.5)
@@ -321,6 +322,8 @@ DEPENDENCIES
   font-awesome-sass
   jbuilder (~> 2.7)
   listen (~> 3.2)
+  omniauth
+  omniauth-rails_csrf_protection
   pg (>= 0.18, < 2.0)
   pg_search
   pry-byebug
@@ -328,7 +331,7 @@ DEPENDENCIES
   puma (~> 4.1)
   rails (~> 6.0.3, >= 6.0.3.7)
   redis (~> 4.0)
-  rspotify
+  rspotify (= 2.10.2)
   sass-rails (>= 6)
   selenium-webdriver
   simple_calendar (~> 2.4)

@@ -9,7 +9,14 @@ class UsersController < ApplicationController
     current_user.save!
 
     # Get user's favorite artists from spotify
-    @following_on_spotify = spotify_user.following(type: "artist", limit: 50)
-    @favorites_from_spotify = spotify_user.top_artists(limit: 50)
+    @spotify_favorites = []
+    following_on_spotify = spotify_user.following(type: "artist", limit: 50)
+    following_on_spotify.each do |artist|
+      @spotify_favorites << Artist.new(name: artist.name, spotify_id: artist.id, image_url: artist.images.first ? artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80")
+    end
+    favorites_from_spotify = spotify_user.top_artists(limit: 50)
+    favorites_from_spotify.each do |artist|
+      @spotify_favorites << Artist.new(name: artist.name, spotify_id: artist.id, image_url: artist.images.first ? artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80")
+    end
   end
 end
