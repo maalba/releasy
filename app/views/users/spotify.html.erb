@@ -1,1 +1,18 @@
-<h3>Success!</h3>
+<div class="container">
+  <h3>These are some of your favorite artists, choose which ones to follow!</h3>
+  <%= link_to "Follow all", add_from_spotify_path( favorites: @spotify_favorites ), class: "btn btn-success mx-3" %>
+  <%= link_to "Save changes", feed_path, class: "btn btn-success mx-3" %>
+
+  <div class="artist-cards row">
+    <% @spotify_favorites.each do |artist| %>
+      <div class="col-sm">
+        <% if Artist.find_by_name(artist.name) == nil %>
+            <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
+        <% else %>
+          <% db_artist = Artist.find_by_name(artist.name) %>
+          <%= render 'components/artist_card', artist: db_artist, user: current_user %>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>
