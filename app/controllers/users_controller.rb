@@ -4,7 +4,8 @@ class UsersController < ApplicationController
     # Now you can access user's private data, create playlists and much more
 
     # Access and modify user's music library
-    spotify_user.saved_tracks.size #=> 20
+    user_country = spotify_user.user_country
+    user_following = spotify_user.following # Returns array of artists
     redirect_to artists_path
   end
 end
