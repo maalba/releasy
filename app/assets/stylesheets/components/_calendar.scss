@@ -1,0 +1,40 @@
+.tooltip-name {
+  position: relative;
+  display: table;
+  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
+
+}
+
+/* Tooltip text */
+.tooltip-name .tooltip-details {
+  visibility: hidden;
+  width: 120px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  top: -5px;
+  left: 105%;
+  transition-delay: 0.1s;
+  /* Position the tooltip text - see examples below! */
+  position: absolute;
+  z-index: 1;
+
+  a {
+    color: green;
+    &:hover {
+      color: darkgreen;
+    }
+  }
+}
+
+/* Show the tooltip text when you mouse over the tooltip container */
+.tooltip-name:hover .tooltip-details {
+  visibility: visible;
+  transition-delay: 0s;
+}
+
+.simple-calendar .today {
+  background: $baby-duck-yellow;
+}

@@ -37,6 +37,7 @@ gem 'rspotify'
 gem 'faker'
 gem 'pg_search'
 gem 'acts_as_favoritor'
+gem "simple_calendar", "~> 2.4"
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
