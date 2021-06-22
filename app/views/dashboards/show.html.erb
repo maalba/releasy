@@ -20,3 +20,7 @@
     <% end %>
   <% end %>
 </div>
+
+<% if current_user.spotify_id == nil && current_user.dismissed == false %>
+  <%= render 'components/auto_spotify_modal' %>
+<% end %>

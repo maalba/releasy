@@ -24,4 +24,10 @@ class UsersController < ApplicationController
     @spotify_ids.uniq!
     @spotify_favorites.uniq! { |artist| artist.spotify_id }
   end
+
+  def dismissed
+    current_user.dismissed = true
+    current_user.save!
+    redirect_to artists_path
+  end
 end
