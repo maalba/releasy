@@ -4,19 +4,33 @@
   width: 450px;
   height: auto;
   margin: 0 auto 20px;
-  border-radius: 5px;
+  border-radius: 2px;
   background: rgba(255, 255, 255, 0.92);
-  box-shadow: -4px 4px 4px rgba(0, 0, 0, 0.25);
+
+  &:hover {
+    .album-link {
+      opacity: 100%;
+      transition:opacity 0.5s;
+    }
+  }
 
   .album-link {
+    opacity: 0%;
+    background-color:rgba(0, 0, 0, 0.8);
+    padding: 8px 0;
     position: absolute;
-    left: 98%;
-    top: -15px;
-    font-size: 1.5rem;
-    color: green;
+    left: 0;
+    bottom: 0;
+    width: 125px;
+    text-align: center;
+    font-size: 0.75rem;
+    color: rgb(28, 228, 28);
+
+    &:hover {
+      text-decoration: none;
+    }
 
     i {
-      background-color: black;
       border-radius: 50%;
     }
   }
@@ -25,7 +39,7 @@
 .album-cover img {
   height: 125px;
   object-fit: contain;
-  border-radius: 5px 0px 0px 5px;
+  border-radius: 2px 0px 0px 2px;
 }
 
 .album-details {

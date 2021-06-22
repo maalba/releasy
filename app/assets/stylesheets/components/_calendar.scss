@@ -1,8 +1,12 @@
+.calendar-container {
+  width: 50%;
+}
+
 .tooltip-name {
   position: relative;
   display: table;
-  border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
-
+  display: inline;
+  /* border-bottom: 1px dotted black; /* If you want dots under the hoverable text */
 }
 
 /* Tooltip text */
@@ -33,6 +37,10 @@
 .tooltip-name:hover .tooltip-details {
   visibility: visible;
   transition-delay: 0s;
+}
+
+.simple-calendar {
+  background-color: $unripe-blueberry;
 }
 
 .simple-calendar .today {

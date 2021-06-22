@@ -4,15 +4,14 @@
 
   h1 {
     text-align: center;
-    text-decoration: underline;
-    color: #FFFFFF;
+    color: #rgba(0,0,0,0.6);
     margin-top: 20px;
     margin-bottom: 20px;
   }
 
   h3 {
     text-align: center;
-    color: #FFFFFF;
+    color: #rgba(0,0,0,0.7);
   }
 }
 
@@ -25,13 +24,14 @@
   position: absolute;
   right: 80%;
   @include subheader-font;
-  color: white;
+  color: rgba(0,0,0,0.4);
   padding: 0 8px 0 0;
-  border-right: 1px solid white;
+  border-right: 1px solid rgba(0,0,0,0.6);
   line-height: 0.5;
 
   .feed-day {
     font-size: 32px;
+    color: rgba(0,0,0,0.6);
     font-weight: bold;
   }
 }
