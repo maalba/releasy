@@ -4126,7 +4126,7 @@ jest-worker@^25.4.0:
     merge-stream "^2.0.0"
     supports-color "^7.0.0"
 
-jquery@^3.6.0:
+jquery@^3.5.1, jquery@^3.6.0:
   version "3.6.0"
   resolved "https://registry.yarnpkg.com/jquery/-/jquery-3.6.0.tgz#c72a09f15c1bdce142f49dbf1170bdf8adac2470"
   integrity sha512-JVzAR/AjBvVt2BmYhxRCSYysDsPcssdmTFnzyLEts9qNwmjmu4JTAMYubEfwVOSwpQ1I1sKKFcxhZCI2buerfw==
@@ -5100,6 +5100,13 @@ parent-module@^1.0.0:
   integrity sha512-GQ2EWRpQV8/o+Aw8YqtfZZPfNRWZYkbidE9k5rpl/hC3vtHHBfGm2Ifi6qWV+coDGkrUKZAxE3Lot5kcsRlh+g==
   dependencies:
     callsites "^3.0.0"
+
+paroller.js@^1.4.7:
+  version "1.4.7"
+  resolved "https://registry.yarnpkg.com/paroller.js/-/paroller.js-1.4.7.tgz#a99000fd1746b1854cc6d34814c40b2820f18a64"
+  integrity sha512-2CLG2nMOemB1TlgN8E2LBzGT8XgRlkkFk9MSp32kLRgxE1zOydpuLNfMwNdjENXEZPQcFKP3txzxoUPoGcuscQ==
+  dependencies:
+    jquery "^3.5.1"
 
 parse-asn1@^5.0.0, parse-asn1@^5.1.5:
   version "5.1.6"
