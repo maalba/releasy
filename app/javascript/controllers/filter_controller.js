@@ -13,14 +13,16 @@ export default class extends Controller {
       el.parentNode.classList.toggle("filter--notFound", !filterableKey.includes( lowerCaseFilterTerm ) )
     })
 
-    const visibleTargets = this.filterableTargets.filter(el => !el.parentNode.classList.contains('filter--notFound'));
-    visibleTargets.forEach((element, index) => {
-      const parallaxFactor = index % 3 === 1 ? 0.5 : 0; // Targets the middle column
-      $(element).paroller({
-        factor: parallaxFactor,
-        type: 'foreground'
-      });
-    });
+
+    // TODO: fix parallax
+    // const visibleTargets = this.filterableTargets.filter(el => !el.parentNode.classList.contains('filter--notFound'));
+    // visibleTargets.forEach((element, index) => {
+    //   const parallaxFactor = index % 3 === 1 ? 0.5 : 0; // Targets the middle column
+    //   $(element).paroller({
+    //     factor: parallaxFactor,
+    //     type: 'foreground'
+    //   });
+    // });
 
   }
 }
