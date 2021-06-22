@@ -1,4 +1,5 @@
 import { Controller } from "stimulus";
+import $ from 'jquery';
 
 export default class extends Controller {
   static targets = [ "source", "filterable" ]
@@ -9,7 +10,17 @@ export default class extends Controller {
     this.filterableTargets.forEach((el, i) => {
       let filterableKey =  el.getAttribute("data-filter-key")
 
-      el.classList.toggle("filter--notFound", !filterableKey.includes( lowerCaseFilterTerm ) )
+      el.parentNode.classList.toggle("filter--notFound", !filterableKey.includes( lowerCaseFilterTerm ) )
     })
+
+    const visibleTargets = this.filterableTargets.filter(el => !el.parentNode.classList.contains('filter--notFound'));
+    visibleTargets.forEach((element, index) => {
+      const parallaxFactor = index % 3 === 1 ? 0.5 : 0; // Targets the middle column
+      $(element).paroller({
+        factor: parallaxFactor,
+        type: 'foreground'
+      });
+    });
+
   }
 }
