@@ -1,7 +1,5 @@
 .search-form-control {
   position: relative;
-  border-bottom: 2px solid white;
-  padding: 0 8px;
   @include title-font;
   font-weight: lighter;
 
@@ -51,7 +49,8 @@
   }
 
   & .dropdown-menu {
-    background-color:  #6bd895;
+    background-color:  $mint-filling;
+    padding: 5px;
   }
 }
 
