@@ -33,22 +33,24 @@
     </div>
   </div>
   <div class="tab-pane fade" id="pills-calendar" role="tabpanel" aria-labelledby="pills-calendar-tab">
-    <%= month_calendar(events: @album_releases) do |date, releases| %>
-      <%= date %>
+    <div class="container calendar-container">
+      <%= month_calendar(events: @album_releases) do |date, releases| %>
+        <%= date %>
 
-      <% releases.each do |release| %>
-        <div class="tooltip-name">
-          <%= release.artists.first.name %>
-          <span class="tooltip-details">
-            <%= link_to "https://open.spotify.com/album/#{release.spotify_id}", target: "_blank", class: "album-link" do %>
-              <i class="fab fa-spotify"></i>
-            <% end %>
-            <%= release.title %>
-          </span>
-        </div>
+        <% releases.each do |release| %>
+          <div class="tooltip-name">
+            <i class="fas fa-circle"></i>
+            <span class="tooltip-details">
+              <%= link_to "https://open.spotify.com/album/#{release.spotify_id}", target: "_blank", class: "album-link" do %>
+                <i class="fab fa-spotify"></i>
+              <% end %>
+              <%= release.title %>
+            </span>
+          </div>
+        <% end %>
       <% end %>
-    <% end %>
-  </div>
+    </div>
+    </div>
 </div>
 
 

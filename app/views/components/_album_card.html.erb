@@ -1,6 +1,6 @@
 <div class="album-card">
   <%= link_to "https://open.spotify.com/album/#{album.spotify_id}", target: "_blank", class: "album-link" do %>
-    <i class="fab fa-spotify"></i>
+    <i class="fab fa-spotify"></i> Play on Spotify
   <% end %>
   <div class="album-cover">
     <%= image_tag album.cover_url unless album.cover_url.nil? %>
