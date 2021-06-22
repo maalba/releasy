@@ -5,7 +5,7 @@
 
   & .fa-search {
     color: white;
-    opacity: 0.4;
+    opacity: 0.6;
   }
 
   & .form-control {
@@ -24,11 +24,12 @@
 
   & ::placeholder {
     color: white;
-    opacity: 0.4;
+    opacity: 0.6;
   }
 
   & .search-options-dropdown {
     color: white;
+    opacity: 0.6;
     @include title-font;
     font-weight: lighter;
     font-size: 24px;
@@ -41,11 +42,11 @@
   & .search-dropdown {
     background-color: transparent;
     border: none;
-    color: white;
+    color: rgba(255, 255, 255, 0.6);
     @include title-font;
     font-weight: lighter;
     font-size: 24px;
-    opacity: 0.4;
+    // opacity: 0.4;
   }
 
   & .dropdown-menu {

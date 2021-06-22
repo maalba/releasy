@@ -2,8 +2,13 @@
   <div class="container">
     <h1>Track new releases for your favorite <span id="banner-typed-text"></span></h1>
     <div class="mt-5">
-      <%= link_to "Signup", new_user_registration_path, class: "btn btn-light btn-lg"  %>
-      <%= link_to "Login", new_user_session_path, class: "btn btn-light btn-lg"  %>
+      <% unless current_user %>
+        <%= link_to "Signup", new_user_registration_path, class: "btn btn-light btn-lg"  %>
+        <%= link_to "Login", new_user_session_path, class: "btn btn-light btn-lg"  %>
+      <% else %>
+        <%= link_to "See New Releases", feed_path, class: "btn btn-light btn-lg"  %>
+        <%= link_to "Search Spotify", artists_path, class: "btn btn-light btn-lg"  %>
+      <% end %>
     </div>
   </div>
 </div>
