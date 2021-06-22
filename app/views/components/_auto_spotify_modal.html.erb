@@ -1,0 +1,24 @@
+<div class="modal fade" id="autoSpotifyModal" tabindex="-1" role="dialog" aria-labelledby="autoSpotifyModalLabel" aria-hidden="true" data-show="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="autoSpotifyModalLabel">Connect to Spotify</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Sign in to Spotify to import all your favorite artists and never miss a release again!</p>
+          <%= link_to '/auth/spotify', class: "btn btn-success", method: :post do %>
+            <i class="fab fa-spotify"></i> Connect with Spotify
+           <% end %>
+      </div>
+      <div class="modal-footer">
+        <%= link_to add_dismissed_to_user_path, class: "btn btn-seconday", data: { dismiss: "modal" }, method: :post do %>
+          Don't ask again
+        <% end %>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Maybe later</button>
+      </div>
+    </div>
+  </div>
+</div>

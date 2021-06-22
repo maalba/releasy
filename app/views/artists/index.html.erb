@@ -1,11 +1,4 @@
 <div class="container artists-find">
-
-  <div class="fixed-bottom">
-    <%= link_to '/auth/spotify', class: "spotify-sign-in btn btn-success", method: :post do %>
-      <i class="fab fa-spotify"> Connect with Spotify</i>
-    <% end %>
-  </div>
-
   <div class="search my-5">
     <%= render "components/search", placeholder_text: "Search for an artist..." %>
   </div>
@@ -16,6 +9,9 @@
   <% end %>
 
   <% unless @query %>
+    <div class="recommendation-heading">
+      <h4>Recommended for you</h4>
+    </div>
     <div class="artist-cards row">
       <% if @recommendations%>
         <% @recommendations.each do |artist, index| %>
@@ -51,4 +47,3 @@
     <% end %>
   </div>
 </div>
-
