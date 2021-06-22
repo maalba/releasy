@@ -1,9 +1,10 @@
-<div class="container artists-find" data-controller="filter">
+<div class="container artists-find">
 
   <div class="fixed-bottom">
-    <%= link_to 'Sign in with Spotify', '/auth/spotify', class: "btn btn-success", method: :post %>
+    <%= link_to '/auth/spotify', class: "spotify-sign-in btn btn-success", method: :post do %>
+      <i class="fab fa-spotify"> Connect with Spotify</i>
+    <% end %>
   </div>
-
 
   <div class="search my-5">
     <%= render "components/search", placeholder_text: "Search for an artist..." %>
@@ -14,33 +15,35 @@
     <%= link_to "Back to Browse", artists_path %>
   <% end %>
 
-  <% unless current_user.all_favorited.empty? || @query %>
-    <h3>Recommended for you:</h3>
+  <% unless @query %>
     <div class="artist-cards row">
-      <% @recommendations.each do |artist, index| %>
-        <div class="col-4">
-          <% if Artist.find_by_name(artist.name) == nil %>
-              <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
-          <% else %>
-            <% db_artist = Artist.find_by_name(artist.name) %>
-            <%= render 'components/artist_card', artist: db_artist, user: current_user %>
-          <% end %>
-        </div>
+      <% if @recommendations%>
+        <% @recommendations.each do |artist, index| %>
+          <div class="col-md-4">
+            <% if Artist.find_by_name(artist.name) == nil %>
+                <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
+            <% else %>
+              <% db_artist = Artist.find_by_name(artist.name) %>
+              <%= render 'components/artist_card', artist: db_artist, user: current_user %>
+            <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <% @artists.each do |artist| %>
+          <div class="col-md-4">
+            <%= render 'components/artist_card', artist: artist, user: current_user %>
+          </div>
+        <% end %>
       <% end %>
     </div>
   <% end %>
 
-  <div class="artist-cards row">
-    <% @artists.each do |artist| %>
-      <div class="col-sm">
-        <%= render 'components/artist_card', artist: artist, user: current_user %>
-      </div>
-    <% end %>
     <% if @query %>
+      <div class="artist-cards row">
       <% @spotify_artists.each do |artist| %>
         <% id = artist.spotify_id %>
         <% unless Artist.search_by_id(id).first %>
-          <div class="col-sm">
+          <div class="col-md-4">
             <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
           </div>
         <% end %>
