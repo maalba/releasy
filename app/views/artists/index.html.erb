@@ -17,7 +17,7 @@
     <div class="artist-cards row">
       <% if @recommendations%>
         <% @recommendations.each do |artist, index| %>
-          <div class="col-4">
+          <div class="col-md-4">
             <% if Artist.find_by_name(artist.name) == nil %>
                 <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
             <% else %>
@@ -28,7 +28,7 @@
         <% end %>
       <% else %>
         <% @artists.each do |artist| %>
-          <div class="col-4">
+          <div class="col-md-4">
             <%= render 'components/artist_card', artist: artist, user: current_user %>
           </div>
         <% end %>
@@ -41,7 +41,7 @@
       <% @spotify_artists.each do |artist| %>
         <% id = artist.spotify_id %>
         <% unless Artist.search_by_id(id).first %>
-          <div class="col-4">
+          <div class="col-md-4">
             <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
           </div>
         <% end %>

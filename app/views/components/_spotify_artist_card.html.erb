@@ -1,3 +1,16 @@
+
+<div class="card-wrapper" data-controller="follow" >
+  <div class="card-details">
+    <span class="card-new-title">// <%= artist.name %></span>
+    <%= link_to new_follow_path( artist: {name: artist.name, spotify_id: artist.spotify_id, image_url: artist.image_url}), class: "heart", remote: true, method: :post, data: { action: "click->follow#toggle"} do %>
+        <%= user.favorited?(artist) ? '<i class="fas fa-heart" data-follow-target="icon"></i>'.html_safe : '<i class="far fa-heart" data-follow-target="icon"></i>'.html_safe %>
+    <% end %>
+  </div>
+  <div class="card-new" data-filter-target="filterable" data-filter-key="<%= artist.name.downcase %>" style="background-image: url('<%= artist.image_url %>')">
+  </div>
+</div>
+
+<!--
 <div class="card-new" data-filter-target="filterable" data-filter-key="<%= artist.name.downcase %>" style="background-image: url('<%= artist.image_url %>')" >
   <div class="artist-card-wrapper">
     <div class="heart-background" data-controller="follow">
@@ -5,6 +18,7 @@
         <%= user.favorited?(artist) ? '<i class="fas fa-heart" data-follow-target="icon"></i>'.html_safe : '<i class="far fa-heart" data-follow-target="icon"></i>'.html_safe %>
       <% end %>
     </div>
-    <span class="card-new-title"><%= artist.name %></span>
+    <span class="card-new-title">// <%= artist.name %></span>
   </div>
 </div>
+-->

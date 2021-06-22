@@ -1,56 +1,52 @@
+.card-details {
+  display: flex;
+}
+
 .card-new {
   width: 100%;
   height: 350px;
-  margin-bottom: 20px;
+  margin-bottom: 50px;
   position: relative;
-  border-radius: 5px;
+  border-radius: 2px;
   background-size: cover;
-  // object-fit: cover;
 }
 
 .card-new-title {
-  position: absolute;
-  text-align: center;
-  width: 100%;
-  color: #FFFFFF;
+  color: rgba(0,0,0,0.7);
   @include card-title-font;
-  bottom: 5px;
-  // z-index: 100;
+  text-align: right;
+  text-transform: uppercase;
+  font-size: 16px;
+  text-shadow: none;
+  flex-grow: 1;
 }
 
-.heart-background {
-  height: 40px;
-  width: 40px;
-  position: absolute;
-  border-radius: 50px;
-  background-color: white;
-  top: -5px;
-  left: -5px;
-  filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+// .heart-background {
+//   height: 40px;
+//   width: 40px;
+//   position: absolute;
+//   border-radius: 50px;
+//   background-color: white;
+//   top: -5px;
+//   left: -5px;
+//   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 
-  a {
-    position: absolute;
-    top: 55%;
-    transform: translateY(-50%);
-    left: 20%;
+.heart {
+  // top: 55%;
+  // transform: translateY(-50%);
+  // left: 20%;
+  color: #EE6666;
+  margin-left: 5px;
+
+  :hover {
+    filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
     color: #EE6666;
-
-    :hover {
-      filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
-    }
   }
-
   i {
-    font-size: 1.5rem;
+    font-size: 1.2rem;
   }
 }
 
-// .artist-card-wrapper {
-//   width: 300px;
-//   height: 300px;
-//   background-image: linear-gradient(180deg, rgba(255, 255, 255, 0) 54.39%, rgba(58, 58, 58, 0.79) 91.59%);
-//   border-radius: 5px;
-// }
 
 .filter--notFound {
   display: none;
