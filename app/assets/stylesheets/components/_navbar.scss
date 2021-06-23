@@ -3,6 +3,14 @@
   background-color: $mint-filling;
   border-bottom: 1px solid rgba(0, 0, 0, 0.2);
 
+  .avatar {
+    background-position: top center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-size: cover;
+  }
+
   & .nav-item {
     @include subheader-font;
 
@@ -41,4 +49,8 @@
     border: 2px solid black;
     padding: 4px;
   }
+}
+
+.dropdown-toggle::after {
+  border: none;
 }
