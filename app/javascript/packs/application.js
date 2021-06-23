@@ -36,7 +36,7 @@ document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
   setTimeout(showSpotifyModal, 2000);
-  shrinkArtistName();
+  // shrinkArtistName();
 
   loadDynamicBannerText();
   $('.parallax').paroller();
