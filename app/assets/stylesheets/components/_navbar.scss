@@ -5,6 +5,7 @@
 
   & .nav-item {
     @include subheader-font;
+    font-size: 21px;;
 
 
     & a {
@@ -36,9 +37,9 @@
 .navbar-brand {
 
   img {
-    width: 40px;
-    background-color: white;
-    border: 2px solid black;
-    padding: 4px;
+    width: 45px;
+    // background-color: white;
+    // border: 2px solid black;
+    // padding: 4px;
   }
 }
