@@ -7,7 +7,7 @@
     <div class="artist-cards row">
       <% @followed_artists.each do |artist| %>
         <div class="col-md-4">
-          <%= render 'components/artist_card', artist: artist, user: current_user %>
+          <%= render 'components/artist_card', artist: artist, user: current_user  %>
         </div>
       <% end %>
     </div>

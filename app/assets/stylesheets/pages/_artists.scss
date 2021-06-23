@@ -1,0 +1,40 @@
+@keyframes float {
+	0% {
+		transform: translateY(0px);
+	}
+	100% {
+		transform: translateY(3px);
+	}
+}
+@keyframes float-middle {
+  0% {
+		transform: translateY(0px) scale(1.02);
+	}
+	100% {
+		transform: translateY(-3px) scale(1.02);
+	}
+}
+.artist-cards {
+  margin-top: 80px;
+//   display: flex;
+  // flex-wrap: wrap;
+//   width: 800px;
+//   margin: 100px auto 0;
+}
+.artist-card.middle-false {
+  // width: 31%;
+  // height: 200px;
+  // background: #999;
+  // margin: 1%;
+  animation: float 5s ease-in-out infinite;
+  animation-direction: alternate;
+  // border-radius: 2px;
+}
+
+.artist-card.middle-true {
+  animation: float 5s ease-in-out infinite;
+  animation-direction: alternate;
+  animation-name: float-middle;
+  // animation: float-middle 5s infinite;
+  // animation-direction: alternate-reverse;
+}
