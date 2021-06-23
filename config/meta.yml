@@ -1,0 +1,4 @@
+meta_product_name: "Releasy"
+meta_title: "Releasy - Follow your Favorites"
+meta_description: "Follow your favorite creators and get notified when they release new content."
+meta_image: "https://res.cloudinary.com/dcwt8cjne/image/upload/v1624431592/releasy.png" # should exist in `app/assets/images/`
