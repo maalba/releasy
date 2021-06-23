@@ -4,7 +4,7 @@
   </div>
 
   <% if @query %>
-    <%= link_to "Back to Browse", artists_path, class: "btn btn-secondary", id: "back-to-browse" %>
+    <%= link_to "Back to Browse", artists_path, class: "btn btn-filled", id: "back-to-browse" %>
     <div class="artist-cards row">
         <% @artists.each do |artist| %>
           <div class="col-md-4">
