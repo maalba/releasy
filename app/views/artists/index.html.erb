@@ -4,11 +4,20 @@
   </div>
 
   <% if @query %>
-    <h2>Search results for <%= @query %>:</h2>
-    <%= link_to "Back to Browse", artists_path %>
-  <% end %>
-
-  <% unless @query %>
+    <%= link_to "Back to Browse", artists_path, class: "btn btn-secondary", id: "back-to-browse" %>
+    <div class="artist-cards row">
+        <% @artists.each do |artist| %>
+          <div class="col-md-4">
+            <% if Artist.find_by_name(artist.name) == nil %>
+                <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
+            <% else %>
+              <% db_artist = Artist.find_by_name(artist.name) %>
+              <%= render 'components/artist_card', artist: db_artist, user: current_user %>
+            <% end %>
+          </div>
+        <% end %>
+    </div>
+  <% else %>
     <div class="recommendation-heading">
       <h4>Recommended for you</h4>
     </div>
@@ -24,26 +33,7 @@
             <% end %>
           </div>
         <% end %>
-      <% else %>
-        <% @artists.each do |artist| %>
-          <div class="col-md-4">
-            <%= render 'components/artist_card', artist: artist, user: current_user %>
-          </div>
-        <% end %>
       <% end %>
     </div>
   <% end %>
-
-    <% if @query %>
-      <div class="artist-cards row">
-      <% @spotify_artists.each do |artist| %>
-        <% id = artist.spotify_id %>
-        <% unless Artist.search_by_id(id).first %>
-          <div class="col-md-4">
-            <%= render "components/spotify_artist_card", artist: artist, user: current_user %>
-          </div>
-        <% end %>
-      <% end %>
-    <% end %>
-  </div>
 </div>
