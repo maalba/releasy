@@ -1,4 +1,4 @@
-<div class="card-wrapper" data-filter-target="filterable" data-filter-key="<%= artist.name.downcase %>" data-controller="follow" >
+<div class="artist-card card-wrapper <%= "middle-#{middle}" if params[:controller] == "artists" %>" data-filter-target="filterable" data-filter-key="<%= artist.name.downcase %>" data-controller="follow" >
   <div class="card-details d-flex flex-row-reverse">
     <div class="shrinkable"> <!-- this div is here for shrink_artist_name.js -->
       <span class="card-new-title">// <%= artist.name.truncate(36) %></span>
