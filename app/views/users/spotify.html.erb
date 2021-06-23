@@ -1,8 +1,10 @@
 <div class="container">
   <div class="title-container" data-controller="loading">
     <h3>These are some of your favorite artists, choose which ones to follow!</h3>
-    <%= link_to "Follow all", add_from_spotify_path( favorites: @spotify_ids ), method: :post, class: "btn btn-success mx-3", data: { action: "click->loading#followSpinner", loading_target: 'follow' } %>
-    <%= link_to "Done", feed_path, class: "btn btn-success mx-3", data: { action: "click->loading#doneSpinner", loading_target: 'done' } %>
+    <div class="buttons">
+      <%= link_to "Follow all", add_from_spotify_path( favorites: @spotify_ids ), method: :post, class: "btn btn-outline mx-3", data: { action: "click->loading#followSpinner", loading_target: 'follow' } %>
+      <%= link_to "Done", feed_path, class: "btn btn-filled mx-3", data: { action: "click->loading#doneSpinner", loading_target: 'done' } %>
+    </div>
   </div>
 
   <div class="artist-cards row">

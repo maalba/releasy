@@ -6,35 +6,9 @@
         <%= link_to "Signup", new_user_registration_path, class: "btn btn-light btn-lg"  %>
         <%= link_to "Login", new_user_session_path, class: "btn btn-light btn-lg"  %>
       <% else %>
-        <%= link_to "See New Releases", feed_path, class: "btn btn-light btn-lg"  %>
-        <%= link_to "Search Spotify", artists_path, class: "btn btn-light btn-lg"  %>
+        <%= link_to "See New Releases", feed_path, class: "btn btn-lg btn-outline" %>
+        <%= link_to "Find New Artists", artists_path, class: "btn btn-lg btn-filled" %>
       <% end %>
-    </div>
-  </div>
-</div>
-
-<div class="container mt-3 vh-25">
-  <div class="card-deck">
-    <div class="card text-center">
-      <div class="card-body">
-        <h5 class="card-title">Follow your favorites</h5>
-        <p class="card-text">Search for your favorite musicians using Spotify's database of artists.</p>
-        <%= link_to "Go to Follow Page", artists_path, class: "btn btn-dark btn-lg"  %>
-      </div>
-    </div>
-    <div class="card text-center">
-      <div class="card-body">
-        <h5 class="card-title">See new releases</h5>
-        <p class="card-text">See new releases from your favorites every day on the Feed.</p>
-        <%= link_to "Go to Feed Page", feed_path, class: "btn btn-dark btn-lg"  %>
-      </div>
-    </div>
-    <div class="card text-center">
-      <div class="card-body">
-        <h5 class="card-title">Get notified</h5>
-        <p class="card-text">Receive an email digest each week with new releases from your followed artists.</p>
-        <%= link_to "Signup Today", new_user_registration_path, class: "btn btn-dark btn-lg"  %>
-      </div>
     </div>
   </div>
 </div>

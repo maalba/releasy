@@ -1,6 +1,5 @@
 h3 {
   font-size: 1.5rem;
-  margin-top: 35px;
   margin-bottom: 0px;
   display: inline;
   vertical-align: middle;
@@ -9,5 +8,12 @@ h3 {
 .title-container {
   margin-top: 35px;
   margin-bottom: 40px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  .btn {
+    margin: 0;
+  }
 }
 
