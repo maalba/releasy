@@ -6,6 +6,11 @@ class UsersController < ApplicationController
     # Set user's attributes based off spotify sign in
     current_user.spotify_id = spotify_user.id
     current_user.country = spotify_user.country
+    unless spotify_user.images.first == nil
+      image_url = spotify_user.images.first.url
+      image_url.gsub!('https://','http://')
+      current_user.image_url = image_url
+    end
     current_user.save!
 
     # Get user's favorite artists from spotify
