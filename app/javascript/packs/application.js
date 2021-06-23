@@ -27,6 +27,7 @@ require('paroller.js')
 import "bootstrap";
 import { loadDynamicBannerText } from '../components/banner';
 import { showSpotifyModal } from '../components/spotify_modal';
+import { shrinkArtistName } from '../components/shrink_artist_name';
 
 // Internal imports, e.g:
 // import { initSelect2 } from '../components/init_select2';
@@ -34,7 +35,8 @@ import { showSpotifyModal } from '../components/spotify_modal';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
-  setTimeout(showSpotifyModal, 2000)
+  setTimeout(showSpotifyModal, 2000);
+  shrinkArtistName();
 
   loadDynamicBannerText();
   $('.parallax').paroller();

@@ -4,18 +4,16 @@ class ArtistsController < ApplicationController
   def index
     if params[:query].present?
       @query = params[:query]
-      @artists = Artist.search_by_name(params[:query])
+      @artists = Artist.search_by_name(params[:query]).to_a
       spotify_artists = RSpotify::Artist.search(params[:query])
-      @spotify_artists = []
       spotify_artists.each do |artist|
-        @spotify_artists << Artist.new(name: artist.name, spotify_id: artist.id, image_url: artist.images.first ? artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80")
+        unless @artists.find { |a| a.spotify_id == artist.id }
+          @artists << Artist.new(name: artist.name, spotify_id: artist.id, image_url: artist.images.first ? artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80")
+        end
       end
     else
       @artists = Artist.all
-      unless current_user.all_favorited.empty?
-        artist = current_user.all_favorited.sample
-        generate_recommendations(artist)
-      end
+      generate_recommendations unless current_user.all_favorited.empty?
     end
     respond_to do |format|
       format.html
@@ -52,13 +50,16 @@ class ArtistsController < ApplicationController
 
   private
 
-  def generate_recommendations(artist)
+  def generate_recommendations
+    artist = current_user.all_favorited.sample
     id = artist.spotify_id
     spotify_artist = RSpotify::Artist.find(id)
     recommended_artists = spotify_artist.related_artists[0..9]
     @recommendations = []
     recommended_artists.each do |artist|
-      @recommendations << Artist.new(name: artist.name, spotify_id: artist.id, image_url: artist.images.first ? artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80")
+      unless current_user.all_favorited.find { |favorited| favorited.spotify_id == artist.id }
+        @recommendations << Artist.new(name: artist.name, spotify_id: artist.id, image_url: artist.images.first ? artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80")
+      end
     end
   end
 
