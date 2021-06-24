@@ -1,4 +1,7 @@
-h1 {
+.feed-container {
+  position: relative;
+
+  h1 {
     text-align: center;
     color: rgba(0,0,0,0.6);
     margin-top: 35px;
@@ -9,9 +12,6 @@ h1 {
     text-align: center;
     color: rgba(0,0,0,0.7);
   }
-
-.feed-container {
-  position: relative;
 }
 
 .album-container {
