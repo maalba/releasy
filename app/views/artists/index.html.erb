@@ -8,8 +8,8 @@
     <div class="artist-cards row">
         <% @artists.each_with_index do |artist, index| %>
           <div class="col-md-4 animate__animated animate__fadeIn">
-            <% if Artist.find_by_name(artist.name) == nil %>
-                <%= render "components/spotify_artist_card", artist: artist, user: current_user, middle: index % 3 == 1 %>
+            <% if Artist.search_by_id(artist.spotify_id).to_a.empty? %>
+              <%= render "components/spotify_artist_card", artist: artist, user: current_user, middle: index % 3 == 1 %>
             <% else %>
               <% db_artist = Artist.find_by_name(artist.name) %>
               <%= render 'components/artist_card', artist: db_artist, user: current_user, middle: index % 3 == 1 %>
@@ -31,6 +31,12 @@
               <% db_artist = Artist.find_by_name(artist.name) %>
               <%= render 'components/artist_card', artist: db_artist, user: current_user, middle: index % 3 == 1 %>
             <% end %>
+          </div>
+        <% end %>
+      <% else %>
+        <% @artists.each_with_index do |artist, index| %>
+          <div class="col-md-4 animate__animated animate__fadeIn">
+              <%= render 'components/artist_card', artist: artist, user: current_user, middle: index % 3 == 1 %>
           </div>
         <% end %>
       <% end %>

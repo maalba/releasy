@@ -14,23 +14,10 @@ Artist.destroy_all
 Album.destroy_all
 Favorite.destroy_all
 
-puts "Creating 20 new hip hop artists and grabbing releases from the last 5 months..."
-20.times do
-  artist = Faker::Music::Hiphop.artist
-  artists = RSpotify::Artist.search(artist)
-  chosen = artists.first
-  name = chosen.name
-  spotify_id = chosen.id
-  image_url = chosen.images ? chosen.images.first["url"] : nil
-  new_artist = Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
-  FetchRecentAlbumsJob.perform_later(new_artist)
-end
+artist_names = [ 'Max Bloom', 'Kings of Convenience', 'Garbage', 'Sleater-Kinney', 'King Gizzard & the Lizard Wizard', 'Migos', 'Japanese Breakfast' ]
 
-puts "Creating 20 new bands and grabbing releases from the last 5 months..."
-
-20.times do
-  artist = Faker::Music.band
-  artists = RSpotify::Artist.search(artist)
+artist_names.each do |artist_name|
+  artists = RSpotify::Artist.search(artist_name)
   chosen = artists.first
   name = chosen.name
   spotify_id = chosen.id
