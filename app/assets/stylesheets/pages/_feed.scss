@@ -45,9 +45,10 @@
   }
 }
 
-.no-feed-message {
+.no-data-message {
   text-align: center;
   color: #FFFFFF;
+  margin: 0 auto;
 
   a {
     color: rgb(166, 166, 226);
@@ -70,4 +71,5 @@
   li {
     margin-left: 5px;
   }
+
 }

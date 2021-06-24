@@ -1,7 +1,7 @@
 <div class="spotify-card artist-card card-wrapper <%= "middle-#{middle}" if params[:controller] == "artists" %>" data-controller="follow" >
   <div class="card-details">
     <div class="shrinkable"> <!-- this div is here for shrink_artist_name.js -->
-      <span class="card-new-title">// <%= artist.name.truncate(36) %></span>
+      <span class="card-new-title">// <%= artist.name.truncate(31) %></span>
       <%= link_to new_follow_path( artist: {name: artist.name, spotify_id: artist.spotify_id, image_url: artist.image_url}), class: "heart", remote: true, method: :post, data: { action: "click->follow#toggle"} do %>
           <%= user.favorited?(artist) ? '<i class="fas fa-heart" data-follow-target="icon"></i>'.html_safe : '<i class="far fa-heart" data-follow-target="icon"></i>'.html_safe %>
       <% end %>

@@ -21,7 +21,9 @@
               <% end %>
             <% end %>
           <% else %>
-            <h3 class="no-feed-message">No new releases...go ahead and <%= link_to "follow some more artists!", artists_path %></h3>
+            <div class="no-data-message">
+              <h3>No new releases...go ahead and <%= link_to "follow some more artists!", artists_path %></h3>
+            </div>
           <% end %>
       </div>
     </div>
