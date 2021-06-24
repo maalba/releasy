@@ -45,7 +45,7 @@ class ArtistsController < ApplicationController
       current_user.favorite(artist) unless current_user.favorited?(artist)
       FetchRecentAlbumsJob.perform_later(artist)
     end
-    redirect_to feed_path
+    redirect_to dashboard_path, notice: "Artists added from Spotify"
   end
 
   private

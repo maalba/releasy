@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: 'pages#home'
   post 'new_follow', to: 'artists#new_follow'
   get 'dashboard', to: 'dashboards#show'
+  post 'spotify_to_dashboard', to: 'dashboards#spotify_to_dashboard'
   get 'feed', to: 'feeds#show'
   get '/auth/spotify/callback', to: 'users#spotify'
   post 'add_from_spotify', to: 'artists#add_from_spotify'
