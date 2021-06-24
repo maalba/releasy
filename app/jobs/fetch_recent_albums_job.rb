@@ -4,6 +4,7 @@ class FetchRecentAlbumsJob < ApplicationJob
   def perform(artist)
     albums = RSpotify::Artist.find(artist.spotify_id).albums(limit: 50, album_type: 'album,single,appears_on')
     albums.select! { |album| album.available_markets.include?("US") }
+    albums.select! { |album| Album.where(spotify_id: album.id).empty? }
     filtered_albums = albums.select do |album|
       (album.release_date_precision == "day" ? Date.parse(album.release_date)  : Date.today << 6) > (Date.today << 5) && album.album_type =~ /(album|single)/
     end
