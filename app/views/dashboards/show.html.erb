@@ -4,9 +4,9 @@
   </div>
 
   <% if !@followed_artists.empty? %>
-    <div class="artist-cards row">
+    <div class="artist-cards row" data-filter-target="container">
       <% @followed_artists.each do |artist| %>
-        <div class="col-md-4">
+        <div class="col-md-4 artist-card-filterable animate__animated animate__fadeIn" data-filter-key="<%= artist.name.downcase %>">
           <%= render 'components/artist_card', artist: artist, user: current_user  %>
         </div>
       <% end %>

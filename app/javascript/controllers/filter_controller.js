@@ -1,28 +1,29 @@
 import { Controller } from "stimulus";
 import $ from 'jquery';
+import Shuffle from 'shufflejs'
+
 
 export default class extends Controller {
-  static targets = [ "source", "filterable" ]
+  static targets = [ "source", "container" ]
 
+  connect() {
+    this.shuffle = new Shuffle(this.containerTarget, {
+      itemSelector: '.artist-card-filterable',
+      // sizer: sizer // could also be a selector: '.my-sizer-element'
+    });
+  }
+  
   filter() {
     let lowerCaseFilterTerm = this.sourceTarget.value.toLowerCase();
+    console.log(lowerCaseFilterTerm)
 
-    this.filterableTargets.forEach((el, i) => {
-      let filterableKey =  el.getAttribute("data-filter-key")
-
-      el.parentNode.classList.toggle("filter--notFound", !filterableKey.includes( lowerCaseFilterTerm ) )
-    })
-
-
-    // TODO: fix parallax
-    // const visibleTargets = this.filterableTargets.filter(el => !el.parentNode.classList.contains('filter--notFound'));
-    // visibleTargets.forEach((element, index) => {
-    //   const parallaxFactor = index % 3 === 1 ? 0.5 : 0; // Targets the middle column
-    //   $(element).paroller({
-    //     factor: parallaxFactor,
-    //     type: 'foreground'
-    //   });
-    // });
-
+    // this.filterableTargets.forEach((el, i) => {
+    //   let filterableKey =  el.getAttribute("data-filter-key")
+    //     el.parentNode.classList.toggle("filter--notFound", !filterableKey.includes( lowerCaseFilterTerm ) )
+    // })
+    this.shuffle.filter(function (element) {
+      let artistName =  element.getAttribute("data-filter-key");
+      return artistName.includes( lowerCaseFilterTerm );
+    });
   }
 }

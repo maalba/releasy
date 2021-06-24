@@ -54,7 +54,7 @@ class ArtistsController < ApplicationController
     artist = current_user.all_favorited.sample
     id = artist.spotify_id
     spotify_artist = RSpotify::Artist.find(id)
-    recommended_artists = spotify_artist.related_artists[0..9]
+    recommended_artists = spotify_artist.related_artists[0..11]
     @recommendations = []
     recommended_artists.each do |artist|
       unless current_user.all_favorited.find { |favorited| favorited.spotify_id == artist.id }
