@@ -7,4 +7,9 @@ class DashboardsController < ApplicationController
       @followed_artists = current_user.all_favorited
     end
   end
+
+  def spotify_to_dashboard
+    redirect_to dashboard_path, notice: "Artists added from Spotify"
+  end
+
 end
