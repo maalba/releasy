@@ -12,7 +12,7 @@ class ArtistsController < ApplicationController
         end
       end
     else
-      @artists = Artist.all
+      @artists = Artist.all.sample(12)
       generate_recommendations unless current_user.all_favorited.empty?
     end
     respond_to do |format|
@@ -40,9 +40,9 @@ class ArtistsController < ApplicationController
     ids = params[:favorites]
     spotify_artists = RSpotify::Artist.find(ids)
     spotify_artists.each do |spotify_artist|
-      artist = Artist.new(name: spotify_artist.name, spotify_id: spotify_artist.id, image_url: spotify_artist.images.first ? spotify_artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80")
-      artist.save!
-      current_user.favorite(artist)
+      artist = Artist.where(name: spotify_artist.name, spotify_id: spotify_artist.id, image_url: spotify_artist.images.first ? spotify_artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80").first_or_create
+      # artist.save!
+      current_user.favorite(artist) unless current_user.favorited?(artist)
       FetchRecentAlbumsJob.perform_later(artist)
     end
     redirect_to feed_path
@@ -54,7 +54,7 @@ class ArtistsController < ApplicationController
     artist = current_user.all_favorited.sample
     id = artist.spotify_id
     spotify_artist = RSpotify::Artist.find(id)
-    recommended_artists = spotify_artist.related_artists[0..11]
+    recommended_artists = spotify_artist.related_artists.sample(12)
     @recommendations = []
     recommended_artists.each do |artist|
       unless current_user.all_favorited.find { |favorited| favorited.spotify_id == artist.id }
