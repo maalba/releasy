@@ -1,11 +1,10 @@
-.album-container {
-  margin: 0 auto;
-  width: 60vw;
+.feed-container {
+  position: relative;
 
   h1 {
     text-align: center;
     color: rgba(0,0,0,0.6);
-    margin-top: 20px;
+    margin-top: 35px;
     margin-bottom: 20px;
   }
 
@@ -13,6 +12,16 @@
     text-align: center;
     color: rgba(0,0,0,0.7);
   }
+}
+
+.album-container {
+  margin: 0 auto;
+  width: 60vw;
+}
+
+.calendar-container {
+  margin: 0 auto;
+  width: 60vw;
 }
 
 .date-with-card {
@@ -53,4 +62,12 @@
 
 #pills-tab {
   margin: 24px;
+  width: auto;
+  position: absolute;
+  top: -20px;
+  right: 0px;
+
+  li {
+    margin-left: 5px;
+  }
 }
