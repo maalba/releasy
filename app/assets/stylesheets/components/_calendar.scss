@@ -13,8 +13,8 @@
 .tooltip-name .tooltip-details {
   visibility: hidden;
   width: 120px;
-  background-color: black;
-  color: #fff;
+  // background-color: black;
+  color: black;
   text-align: center;
   padding: 5px 0;
   border-radius: 6px;
@@ -25,12 +25,12 @@
   position: absolute;
   z-index: 1;
 
-  a {
-    color: green;
-    &:hover {
-      color: darkgreen;
-    }
-  }
+  // a {
+  //   color: green;
+  //   &:hover {
+  //     color: darkgreen;
+  //   }
+  // }
 }
 
 /* Show the tooltip text when you mouse over the tooltip container */
@@ -40,7 +40,16 @@
 }
 
 .simple-calendar {
-  background-color: $unripe-blueberry;
+  background-color: transparent;
+  margin: 32px 0px;
+
+  .calendar-navbar {
+    margin: 12px 0px;
+  }
+
+  .table {
+    background-color: $unripe-blueberry;
+  }
 }
 
 .simple-calendar .today {
