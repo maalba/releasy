@@ -37,11 +37,7 @@
             <div class="tooltip-name">
               <i class="fas fa-circle"></i>
               <span class="tooltip-details">
-                <%= link_to "https://open.spotify.com/album/#{release.spotify_id}", target: "_blank", class: "album-link" do %>
-                  <i class="fab fa-spotify"></i>
-                <% end %>
-                <%= release.artists.first.name %> -
-                <%= release.title %>
+                 <%= render 'components/album_card', album: release %>
               </span>
             </div>
           <% end %>

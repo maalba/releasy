@@ -14,7 +14,7 @@ Artist.destroy_all
 Album.destroy_all
 
 puts "removing and creating test user"
-User.find_by(email: 'bungizzle@mail.com').destroy
+User.find_by(email: 'bungizzle@mail.com').destroy unless User.find_by(email: 'bungizzle@mail.com') == nil
 user = User.create(email: 'bungizzle@mail.com', password: "secret")
 
 
