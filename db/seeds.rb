@@ -12,9 +12,14 @@ RSpotify.authenticate(ENV["SPOTIFY_CLIENT_ID"], ENV["SPOTIFY_CLIENT_SECRET"])
 puts "cleaning out existing data..."
 Artist.destroy_all
 Album.destroy_all
-Favorite.destroy_all
 
-artist_names = [ 'Max Bloom', 'Kings of Convenience', 'Garbage', 'Sleater-Kinney', 'King Gizzard & the Lizard Wizard', 'Migos', 'Japanese Breakfast' ]
+puts "removing and creating test user"
+User.find_by(email: 'bungizzle@mail.com').destroy
+user = User.create(email: 'bungizzle@mail.com', password: "secret")
+
+
+puts "adding artists"
+artist_names = [ 'Tyler the Creator', 'Unknown Mortal Orchestra', 'Stimulator Jones', 'Japanese Breakfast']
 
 artist_names.each do |artist_name|
   artists = RSpotify::Artist.search(artist_name)
@@ -23,6 +28,7 @@ artist_names.each do |artist_name|
   spotify_id = chosen.id
   image_url = chosen.images ? chosen.images.first["url"] : nil
   new_artist = Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
+  user.favorite(new_artist)
   FetchRecentAlbumsJob.perform_later(new_artist)
 end
 

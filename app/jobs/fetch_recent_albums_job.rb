@@ -2,8 +2,10 @@ class FetchRecentAlbumsJob < ApplicationJob
   queue_as :default
 
   def perform(artist)
-    albums = RSpotify::Artist.find(artist.spotify_id).albums(limit: 50, album_type: 'album,single,appears_on')
-    albums.select! { |album| album.available_markets.include?("US") }
+    # TODO - add 'appears_on' back in after demo
+    albums = RSpotify::Artist.find(artist.spotify_id).albums(limit: 50, album_type: 'album,single')
+    # TODO - choose available market based on user location
+    albums.select! { |album| album.available_markets.include?("AU") }
     filtered_albums = albums.select do |album|
       (album.release_date_precision == "day" ? Date.parse(album.release_date)  : Date.today << 6) > (Date.today << 5) && album.album_type =~ /(album|single)/
     end
