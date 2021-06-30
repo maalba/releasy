@@ -1,5 +1,5 @@
 .feed-container {
-  position: relative;
+  // position: relative;
 
   h1 {
     text-align: center;
@@ -25,13 +25,14 @@
 }
 
 .date-with-card {
-  width: 1005;
   position: relative;
+  width: 450px;
+  margin: 0 auto 20px;
 }
 
 .feed-date {
   position: absolute;
-  right: 80%;
+  right: 115%;
   @include subheader-font;
   color: rgba(0,0,0,0.4);
   padding: 0 8px 0 0;
