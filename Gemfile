@@ -40,6 +40,8 @@ gem 'pg_search'
 gem 'acts_as_favoritor'
 gem "simple_calendar", "~> 2.4"
 gem 'omniauth-rails_csrf_protection'
+gem 'sidekiq'
+gem 'sidekiq-failures', '~> 1.0'
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
