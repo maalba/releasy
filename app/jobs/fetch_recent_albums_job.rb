@@ -7,7 +7,7 @@ class FetchRecentAlbumsJob < ApplicationJob
     # TODO - choose available market based on user location
     albums.select! { |album| album.available_markets.include?("AU") }
     filtered_albums = albums.select do |album|
-      (album.release_date_precision == "day" ? Date.parse(album.release_date)  : Date.today << 6) > (Date.today << 5) && album.album_type =~ /(album|single)/
+      (album.release_date_precision == "day" ? Date.parse(album.release_date) : Date.today << 6) > (Date.today << 5) && album.album_type =~ /(album|single)/
     end
     recent_albums = []
     filtered_albums.each do |album|
