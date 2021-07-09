@@ -1,13 +1,16 @@
-class FetchRecentAlbumsJob < ApplicationJob
+class GetNewReleasesJob < ApplicationJob
   queue_as :default
 
   def perform(artist)
+    puts "Getting new releases for #{artist.name}..."
+    # get date of newest release
+    latest_release_date = artist.albums.first.release_date
     # TODO - add 'appears_on' back in after demo
     albums = RSpotify::Artist.find(artist.spotify_id).albums(limit: 50, album_type: 'album,single')
     # TODO - choose available market based on user location
     albums.select! { |album| album.available_markets.include?("AU") }
     filtered_albums = albums.select do |album|
-      (album.release_date_precision == "day" ? Date.parse(album.release_date) : Date.today << 6) > (Date.today << 5) && album.album_type =~ /(album|single)/
+      (album.release_date_precision == "day" ? Date.parse(album.release_date) : latest_release_date << 1) > latest_release_date && album.album_type =~ /(album|single)/
     end
     recent_albums = []
     filtered_albums.each do |album|
@@ -25,5 +28,11 @@ class FetchRecentAlbumsJob < ApplicationJob
       release.album = album
       release.save!
     end
+  end
+
+  rescue_from ActiveRecord::RecordNotUnique do |exception|
+    message = "Album exists already"
+    puts message
+    logger.error message
   end
 end

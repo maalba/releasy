@@ -5,6 +5,4 @@ class Album < ApplicationRecord
   def start_time
     self.release_date
   end
-
-
 end
