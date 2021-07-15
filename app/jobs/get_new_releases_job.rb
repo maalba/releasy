@@ -4,7 +4,7 @@ class GetNewReleasesJob < ApplicationJob
   def perform(artist)
     puts "Getting new releases for #{artist.name}..."
     # get date of newest release
-    latest_release_date = artist.albums.max_by {|album| album.release_date}.release_date
+    latest_release_date = artist.albums.max_by(&:release_date).release_date
     # TODO - add 'appears_on' back in after demo
     albums = RSpotify::Artist.find(artist.spotify_id).albums(limit: 50, album_type: 'album,single')
     # TODO - choose available market based on user location
