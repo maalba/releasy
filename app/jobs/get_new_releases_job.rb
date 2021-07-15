@@ -3,19 +3,18 @@ class GetNewReleasesJob < ApplicationJob
 
   def perform(artist)
     puts "Getting new releases for #{artist.name}..."
-    # get date of newest release
-    latest_release_date = artist.albums.max_by(&:release_date).release_date
+    # get date of newest release; if no albums in DB, use last year
+    latest_release_date = artist.albums.any? ? artist.albums.max_by(&:release_date).release_date : Date.today.prev_year
     # TODO - add 'appears_on' back in after demo
     albums = RSpotify::Artist.find(artist.spotify_id).albums(limit: 50, album_type: 'album,single')
     # TODO - choose available market based on user location
     albums.select! { |album| album.available_markets.include?("AU") }
-    filtered_albums = albums.select do |album|
-      (album.release_date_precision == "day" ? Date.parse(album.release_date) : latest_release_date << 1) > latest_release_date && album.album_type =~ /(album|single)/
-    end
+    albums.select! { |album| album.release_date_precision == "day" }
+    albums.select! { |album| Date.parse(album.release_date) > latest_release_date }
     recent_albums = []
-    filtered_albums.each do |album|
+    albums.each do |album|
       album_title = album.name
-      album_release_date = album.release_date_precision == "day" ? Date.parse(album.release_date)  : nil
+      album_release_date = Date.parse(album.release_date)
       album_type = album.album_type
       album_spotify_id = album.id
       album_cover_url = album.images ? album.images.first["url"] : nil

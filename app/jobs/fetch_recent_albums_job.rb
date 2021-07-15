@@ -6,13 +6,12 @@ class FetchRecentAlbumsJob < ApplicationJob
     albums = RSpotify::Artist.find(artist.spotify_id).albums(limit: 50, album_type: 'album,single')
     # TODO - choose available market based on user location
     albums.select! { |album| album.available_markets.include?("AU") }
-    filtered_albums = albums.select do |album|
-      (album.release_date_precision == "day" ? Date.parse(album.release_date) : Date.today << 6) > (Date.today << 5) && album.album_type =~ /(album|single)/
-    end
+    # only include albums where we know the release date
+    albums.select! { |album| album.release_date_precision == "day" }
     recent_albums = []
-    filtered_albums.each do |album|
+    albums.each do |album|
       album_title = album.name
-      album_release_date = album.release_date_precision == "day" ? Date.parse(album.release_date)  : nil
+      album_release_date = Date.parse(album.release_date)
       album_type = album.album_type
       album_spotify_id = album.id
       album_cover_url = album.images ? album.images.first["url"] : nil
