@@ -29,7 +29,7 @@ artist_names.each do |artist_name|
   image_url = chosen.images ? chosen.images.first["url"] : nil
   new_artist = Artist.create!(name: name, spotify_id: spotify_id, image_url: image_url)
   user.favorite(new_artist)
-  FetchRecentAlbumsJob.perform_later(new_artist)
+  GetNewReleasesJob.perform_later(new_artist)
 end
 
 puts "finished seeding!"
