@@ -9,9 +9,24 @@ class Artist < ApplicationRecord
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
-    pg_search_scope :search_by_id,
+  pg_search_scope :search_by_id,
     against: :spotify_id,
     using: {
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
+
+  def fetch_releases(latest_release_date = nil)
+    # TODO: do we want to add 'appears_on' back in?
+    # get all albums for an artist
+    albums = RSpotify::Artist.find(spotify_id).albums(limit: 50, album_type: 'album,single')
+    # TODO: remove market validation -- the feed constroller should choose market based on user location
+    albums.select! { |album| album.available_markets.include?("AU") }
+    # only select albums where we actually know the release day
+    albums.select! { |album| album.release_date_precision == "day" }
+    unless latest_release_date.nil?
+      # only select albums that have been released since the last album stored in the DB
+      albums.select! { |album| Date.parse(album.release_date) > latest_release_date }
+    end
+    return albums
+  end
 end
