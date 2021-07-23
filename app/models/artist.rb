@@ -15,7 +15,8 @@ class Artist < ApplicationRecord
       tsearch: { prefix: true } # <-- now `superman batm` will return something!
     }
 
-  def fetch_releases(latest_release_date = nil)
+  def fetch_releases
+    latest_release_date = albums.any? ? albums.max_by(&:release_date).release_date : Date.today.prev_year
     # TODO: do we want to add 'appears_on' back in?
     # get all albums for an artist
     albums = RSpotify::Artist.find(spotify_id).albums(limit: 50, album_type: 'album,single')
@@ -23,10 +24,8 @@ class Artist < ApplicationRecord
     albums.select! { |album| album.available_markets.include?("AU") }
     # only select albums where we actually know the release day
     albums.select! { |album| album.release_date_precision == "day" }
-    unless latest_release_date.nil?
-      # only select albums that have been released since the last album stored in the DB
-      albums.select! { |album| Date.parse(album.release_date) > latest_release_date }
-    end
+    # only select albums that have been released since the last album stored in the DB
+    albums.select! { |album| Date.parse(album.release_date) > latest_release_date }
     return albums
   end
 end

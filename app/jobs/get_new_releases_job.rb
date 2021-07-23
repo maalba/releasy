@@ -4,8 +4,7 @@ class GetNewReleasesJob < ApplicationJob
   def perform(artist)
     puts "Getting new releases for #{artist.name}..."
     # get date of newest release; if no albums in DB, use last year
-    latest_release_date = artist.albums.any? ? artist.albums.max_by(&:release_date).release_date : Date.today.prev_year
-    albums = artist.fetch_releases(latest_release_date)
+    albums = artist.fetch_releases
     albums.each do |album|
       new_album = Album.create!(
         title: album.name,
