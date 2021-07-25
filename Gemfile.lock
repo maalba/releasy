@@ -273,6 +273,7 @@ GEM
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 4.0)
       netrc (~> 0.8)
+    rollbar (3.2.0)
     rspotify (2.10.2)
       addressable (~> 2.5.2)
       omniauth-oauth2 (>= 1.6)
@@ -384,6 +385,7 @@ DEPENDENCIES
   rails (~> 6.0.3, >= 6.0.3.7)
   rails_admin (~> 2.0)
   redis (~> 4.0)
+  rollbar
   rspotify (= 2.10.2)
   sass-rails (>= 6)
   selenium-webdriver
