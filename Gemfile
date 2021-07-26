@@ -44,6 +44,7 @@ gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
 gem 'rails_admin', '~> 2.0'
 gem 'rollbar'
+gem "sidekiq-throttled"
 
 group :development, :test do  gem 'pry-byebug'
   gem 'pry-rails'
