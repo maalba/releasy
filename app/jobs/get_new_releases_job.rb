@@ -1,5 +1,15 @@
 class GetNewReleasesJob < ApplicationJob
+  include Sidekiq::Throttled::Worker
   queue_as :default
+
+  sidekiq_options :queue => :default
+
+  sidekiq_throttle({
+    # Allow maximum 10 concurrent jobs of this class at a time.
+    # :concurrency => { :limit => 10 },
+    # Allow maximum 1 job processed per second.
+    :threshold => { :limit => 1, :period => 1.second }
+  })
 
   def perform(artist)
     puts "Getting new releases for #{artist.name}..."
