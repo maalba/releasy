@@ -42,6 +42,8 @@ gem "simple_calendar", "~> 2.4"
 gem 'omniauth-rails_csrf_protection'
 gem 'sidekiq'
 gem 'sidekiq-failures', '~> 1.0'
+gem 'letter_opener', group: :development
+gem 'postmark-rails'
 gem 'rails_admin', '~> 2.0'
 gem 'rollbar'
 gem "sidekiq-throttled"
