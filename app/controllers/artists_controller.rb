@@ -33,7 +33,7 @@ class ArtistsController < ApplicationController
     artist = Artist.new(artist_params)
     artist.save!
     current_user.favorite(artist)
-    FetchRecentAlbumsJob.perform_now(artist)
+    GetNewReleasesJob.perform_now(artist)
   end
 
   def add_from_spotify
@@ -43,7 +43,7 @@ class ArtistsController < ApplicationController
       artist = Artist.where(name: spotify_artist.name, spotify_id: spotify_artist.id, image_url: spotify_artist.images.first ? spotify_artist.images.first["url"] : "https://images.unsplash.com/photo-1614680376593-902f74cf0d41?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1934&q=80").first_or_create
       # artist.save!
       current_user.favorite(artist) unless current_user.favorited?(artist)
-      FetchRecentAlbumsJob.perform_later(artist)
+      GetNewReleasesJob.perform_later(artist)
     end
     redirect_to dashboard_path, notice: "Artists added from Spotify"
   end
