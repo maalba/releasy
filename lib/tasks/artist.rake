@@ -5,6 +5,7 @@ namespace :artist do
     puts "Checking new releases for #{artists.size} artists..."
     artists.each do |artist|
       GetNewReleasesJob.perform_later(artist)
+      sleep 1.second
     end
   end
 
